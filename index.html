@@ -5,10 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blank Page</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            z-index: 10;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .tooltip.active {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
 </head>
-<body class="bg-whitesmoke text-gray-800 font-sans">
-    <div class="container flex items-center justify-center h-screen">
-        <h2 class="text-2xl text-center">This page has been intentionally left blank.</h2>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+    <div class="flex items-center justify-center h-screen">
+        <div class="text-center">
+
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">This page has been intentionally left blank.</h2>
+            <div class="flex justify-center space-x-4">
+                <!-- Eaglebox Studio Button -->
+                <a href="#" class="bg-orange-500 hover:bg-blue-900 text-black hover:text-white transition-colors duration-300 px-6 py-3 rounded-lg">
+                    Eaglebox Studio
+                </a>
+                <!-- Sprocket and Claw Button -->
+                <div class="relative">
+                    <button class="bg-blue-200 hover:bg-gray-300 text-gray-800 transition-colors duration-300 px-6 py-3 rounded-lg relative">
+                        Sprocket and Claw
+                    </button>
+                    <div class="tooltip text-sm mt-2 w-28 text-center absolute bg-gray-800 text-white rounded-lg p-2 bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 transition-opacity duration-300">
+                        Coming Soon
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sprocketButton = document.querySelector(".relative");
+
+            sprocketButton.addEventListener("mouseenter", function () {
+                const tooltip = sprocketButton.querySelector(".tooltip");
+                tooltip.classList.add("active");
+            });
+
+            sprocketButton.addEventListener("mouseleave", function () {
+                const tooltip = sprocketButton.querySelector(".tooltip");
+                tooltip.classList.remove("active");
+            });
+        });
+    </script>
+
 </body>
 </html>
